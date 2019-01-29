@@ -32,7 +32,7 @@ function Simplebeam(E, I, L, pointLoads) {
       return (sectionNum - 1) / (this.numberOfSections - 1) * this.length;
     }
 
-    if (arguments.length == 0) { // no arguements provided
+    if (arguments.length == 0) { // no arguments provided
       result = [];
       for (var i = 1; i <= this.numberOfSections; i++) {
         result.push((i - 1) / (this.numberOfSections - 1) * this.length);
@@ -46,10 +46,12 @@ function Simplebeam(E, I, L, pointLoads) {
   this.shear = function(xCoord) {
     // construct shear diagram
     var result = [];
+
     // loop through each point loads
     for (var loadNumber = 1; loadNumber <= this.pointLoads.length; loadNumber++) {
       var load = this.pointLoads[loadNumber - 1][0];
       var loc = this.pointLoads[loadNumber - 1][1];
+      
       // loop through each section
       for (var sectionNum = 1; sectionNum <= this.numberOfSections; sectionNum++) {
 
@@ -85,8 +87,8 @@ function Simplebeam(E, I, L, pointLoads) {
 }
 
 console.log("its working");
-var pointLoads = [[1, 180]];
+var pointLoads = [[1, 180], [2, 180]];
 var beam = new Simplebeam(29000, 100, 360, pointLoads);
 beam.printToConsole();
-beam.xCoord();
-beam.shear();
+console.log(beam.xCoord());
+console.log(beam.shear());
