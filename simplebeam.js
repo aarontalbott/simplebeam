@@ -1,4 +1,50 @@
-function Simplebeam(E, I, L, pointLoads) {
+// Material Object Constructor
+// name: descriptive name
+// fy: yield stress
+// fu: ultimate stress
+// E: elastic modulus
+
+function Material(name, fy, fu, E) {
+  this.name = name;
+  this.fy = fy;
+  this.fu = fu;
+  this.E = E;
+}
+
+// Section Object Constructor
+// name: descriptive name
+// Ix: moment of inertia 
+
+function Section(name, Ix) {
+  this.name = name;
+  this.Ix = Ix;
+}
+
+// Member Object Constructor
+// name: descriptive name
+// L: length of member
+// Lb: unbraced length
+
+function Member(name, L, Lb) {
+  this.name = name;
+  this.L = L;
+  this.Lb = Lb;
+}
+
+// Load Object Constructor
+
+function Load(name, type, loc1, mag1, loc2, mag2) {
+  this.name = name;
+  this.type = type;
+  this.loc1 = loc1;
+  this.mag1 = mag1;
+  this.loc2 = loc2;
+  this.mag2 = mag2;
+}
+
+// Beam Object Constructor  
+
+function Simplebeam(material, section, member, loads) {
 
   // PROPERTIES
   // units must be consistent !!
